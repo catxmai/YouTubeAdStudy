@@ -13,3 +13,5 @@ keys.py
 *.json
 !config_example.json
 !requirements.txt
+
+!/interests/**

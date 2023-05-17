@@ -15,16 +15,16 @@ if __name__ == "__main__":
     start_time = time.time()
 
     # CHANGE THESE BEFORE RUNNING
-    running_vm = False # on gcp
-    headless = False # running without gui
+    running_vm = True # on gcp
+    headless = True # running without gui
     config_path = "config.json" # If no config.json, leave ""
-    # video_list = "conspiracy_videos_0_500000.csv"
-    video_list = "control_videos_clean.csv"
+    video_list = "conspiracy_videos_0_500000.csv"
+    # video_list = "control_videos_clean.csv"
     
 
     df = pd.read_csv(video_list)
     url_list = [
-        (df_index,"https://www.youtube.com/watch?v="+ i['videoid']) for df_index, i in df[129:140].iterrows()
+        (df_index,"https://www.youtube.com/watch?v="+ i['videoid']) for df_index, i in df[12600:14000].iterrows()
     ]
 
     

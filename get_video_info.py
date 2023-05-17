@@ -39,8 +39,8 @@ def get_video_info(video_url, driver: webdriver.Chrome) -> dict:
 
     pause_video(driver)
 
-    preroll_ad_url = click_preroll_ad(driver)
-    side_ad_url = click_side_ad(driver)
+    # preroll_ad_url = click_preroll_ad(driver)
+    # side_ad_url = click_side_ad(driver)
 
     load_script_tag(driver)
     video_title = get_video_title()
@@ -58,7 +58,7 @@ def get_video_info(video_url, driver: webdriver.Chrome) -> dict:
     comment_count = get_comment_count(driver)
     video_genre = get_video_genre()
 
-    MAX_WAIT_TIME = 45 
+    MAX_WAIT_TIME = 75 
     preroll_ad2_id, preroll_ad2_reasons, preroll_ad2_info, preroll_ad2_site = None, None, None, None
     if get_number_of_ads_left(driver) == 1:
         time_left = get_ad_duration(driver)
@@ -103,7 +103,7 @@ def get_video_info(video_url, driver: webdriver.Chrome) -> dict:
 
         'preroll_ad_id': preroll_ad_id,
         'preroll_ad_video_url': preroll_ad_video_url,
-        'preroll_ad_url': preroll_ad_url,
+        # 'preroll_ad_url': preroll_ad_url,
         'preroll_ad_site': preroll_ad_site,
         'preroll_ad_reasons': preroll_ad_reasons,
         'preroll_ad_info': preroll_ad_info,
@@ -114,7 +114,7 @@ def get_video_info(video_url, driver: webdriver.Chrome) -> dict:
         'preroll_ad2_reasons': preroll_ad2_reasons,
         'preroll_ad2_info': preroll_ad2_info,
         
-        'side_ad_url': side_ad_url,
+        # 'side_ad_url': side_ad_url,
         'side_ad_site': side_ad_site,
         'side_ad_text': side_ad_text,
         'side_ad_img': side_ad_img,

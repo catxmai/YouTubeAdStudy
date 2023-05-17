@@ -19,10 +19,11 @@ if __name__ == "__main__":
 	# 		if "video_title" in json_data:
 	# 			print(json_data["preroll_ad_reasons"])
 
-	# project_name = "dontcrimeme"
-	# bucket_name = "youtube-ads-2023"
+	project_name = "dontcrimeme"
+	bucket_name = "youtube-ads-2023"
 
-	# upload_from_directory(project_name, bucket_name, "gcp_logs/", "gcp_logs/")
+	upload_from_directory(project_name, bucket_name, "UserData_happysquare89/", "UserData_happysquare89/")
+	# upload_blob(project_name, bucket_name, "pretty_output/pretty_output_20230516_2231.json", "pretty_output/pretty_output_20230516_2231.json")
 
 
 			
