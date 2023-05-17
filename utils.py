@@ -12,6 +12,7 @@ import time
 import datetime
 import glob
 import os
+# import threading
 
 
 def upload_blob(project_name, bucket_name, source_file_name, destination_blob_name):
@@ -58,6 +59,7 @@ def create_driver(config_path="", headless=True):
             options.add_argument("user-data-dir=" + config['user_data'])
 
     driver = webdriver.Chrome(options = options)
+    # driver.set_script_timeout(10)
 
     try:
         youtube_login(driver, config['username'], config['password'] )
@@ -96,3 +98,15 @@ def get_test_id():
     test_id = int('{date:%Y%m%d%H%M%S}'.format(date = d))
 
     return test_id, test_str
+
+# class TimeoutException(Exception):
+#     pass
+
+# def timeout_handler():
+#     raise TimeoutException("Timed OUT!!")
+
+# def set_timeout(seconds):
+#     timer = threading.Timer(seconds,timeout_handler)
+#     timer.start()
+#     return timer
+

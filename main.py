@@ -11,20 +11,21 @@ import os
 from selenium.common.exceptions import WebDriverException
 from selenium.common.exceptions import NoSuchWindowException
 
+
 if __name__ == "__main__":
     start_time = time.time()
 
     # CHANGE THESE BEFORE RUNNING
     running_vm = False # on gcp
     headless = False # running without gui
-    config_path = "config.json" # If no config.json, leave ""
+    config_path = "" # If no config.json, leave ""
     # video_list = "conspiracy_videos_0_500000.csv"
     video_list = "control_videos_clean.csv"
     
 
     df = pd.read_csv(video_list)
     url_list = [
-        (df_index,"https://www.youtube.com/watch?v="+ i['videoid']) for df_index, i in df[129:140].iterrows()
+        (df_index,"https://www.youtube.com/watch?v="+ i['videoid']) for df_index, i in df[95:120].iterrows()
     ]
 
     
@@ -74,7 +75,10 @@ if __name__ == "__main__":
             log_file.write(f"{df_index}, {url}\n")
 
             try:
+                # timeout = set_timeout(3)
                 video_data = get_video_info(url, driver)
+                # timeout.cancel()
+
                 video_data['df_index'] = df_index
                 video_data["id"] = i
 
@@ -90,12 +94,19 @@ if __name__ == "__main__":
                 pretty_output.flush()
                 os.fsync(pretty_output)
 
+            # except TimeoutException as e:
+            #     print("timeout\n")
+            #     log_file.write("Current page timed out\n")
+            #     #can put timeout info into json here
+            #     break
             except (NoSuchWindowException, WebDriverException) as e:
                 log_file.write("Browser was closed or connection was lost \n")
                 log_file.write(traceback.format_exc() + '\n')
                 break
+            
             except Exception as e:
                 print(traceback.format_exc())
+                print("standard exception\n")
                 log_file.write(traceback.format_exc() + '\n')
                 log_file.flush()
                 os.fsync(log_file)
