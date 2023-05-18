@@ -24,7 +24,7 @@ if __name__ == "__main__":
 
     df = pd.read_csv(video_list)
     url_list = [
-        (df_index,"https://www.youtube.com/watch?v="+ i['videoid']) for df_index, i in df[12600:14000].iterrows()
+        (df_index,"https://www.youtube.com/watch?v="+ i['videoid']) for df_index, i in df[13242:17000].iterrows()
     ]
 
     

@@ -7,10 +7,6 @@ from utils import *
 
 if __name__ == "__main__":
 
-	a = ""
-	b = 2 if a else None
-	print(b)
-
 	# with open("output/output_20230510_2311.json", 'r') as f:
 	# 	for _ in range(2):
 	# 		next(f)
@@ -22,8 +18,8 @@ if __name__ == "__main__":
 	project_name = "dontcrimeme"
 	bucket_name = "youtube-ads-2023"
 
-	upload_from_directory(project_name, bucket_name, "UserData_happysquare89/", "UserData_happysquare89/")
-	# upload_blob(project_name, bucket_name, "pretty_output/pretty_output_20230516_2231.json", "pretty_output/pretty_output_20230516_2231.json")
+	# upload_from_directory(project_name, bucket_name, "UserData_happysquare89/", "UserData_happysquare89/")
+	upload_blob(project_name, bucket_name, "pretty_output/pretty_output_20230517_2238_combined.json", "pretty_output/pretty_output_20230517_2238_combined.json")
 
 
 			
