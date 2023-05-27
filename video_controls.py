@@ -51,7 +51,7 @@ def skip_ad(driver: webdriver.Chrome):
             time.sleep(5)
             click_skip_button(driver)
         except (NoSuchElementException, ElementNotInteractableException) as e:
-            pass
+            return
             
 
     
