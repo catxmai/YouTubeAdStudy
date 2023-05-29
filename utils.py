@@ -3,7 +3,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait 
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 from google.cloud import storage
 
@@ -45,9 +44,6 @@ def create_driver(config_path="", headless=True):
     options.add_argument("--disable-extensions")
     if headless:
         options.add_argument("--headless")
-
-    # capabilities = DesiredCapabilities.CHROME
-    # capabilities["pageLoadStrategy"] = "none"
 
     if config_path:
         config = {}
@@ -99,3 +95,12 @@ def get_test_id():
     test_id = int('{date:%Y%m%d%H%M%S}'.format(date = d))
 
     return test_id, test_str
+
+
+def collect_interests(driver):
+    
+    driver.get("https://myadcenter.google.com/customize")
+    interest_cards = driver.find_elements(By.CLASS_NAME, "YcxLyd")
+    interests = [i.get_attribute("innerHTML") for i in interest_cards]
+
+    return interest_cards
